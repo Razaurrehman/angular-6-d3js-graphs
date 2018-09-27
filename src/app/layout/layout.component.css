@@ -1,0 +1,33 @@
+.sidenav-container {
+    height: 100%;
+}
+
+.sidenav {
+    width: 200px;
+}
+
+.mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+}
+
+.router-nav {
+    background-color: #3f51b5;
+    color: white;
+    margin: 6px;
+    border-radius: 4px;
+    -webkit-tap-highlight-color: #3f51b5 !important;
+}
+
+.router-nav:hover {
+    background-color: #3f51b5 !important;
+    color: white;
+    margin: 6px;
+    border-radius: 4px;
+    -webkit-tap-highlight-color: #3f51b5 !important;
+}
+
+.router-nav-without {
+    background-color: transparent;
+    color: black;
+}
