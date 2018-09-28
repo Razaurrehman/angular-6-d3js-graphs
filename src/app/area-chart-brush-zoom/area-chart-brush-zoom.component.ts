@@ -117,24 +117,6 @@ export class AreaChartBrushZoomComponent implements OnInit , AfterViewInit {
     return data.map(v => ({date: new Date(v.date), mentions: v.mentions}));
   }
 
-  private responsivefy(svg) {
-    const container = d3.select(svg.node().parentNode),
-      width = parseInt(svg.attr('width'), 10),
-      height = parseInt(svg.attr('height'), 10);
-    const aspect = width / height;
-    svg.attr('viewBox', `0 0 ${width + 100} ${height}`).attr('preserveAspectRatio', 'xMinYMid').attr('width', width).attr('height', height).call(resize);
-
-    d3.select(window).on('resize.' + container.attr('id'), resize);
-    function resize() {
-      const rect = container.node().getBoundingClientRect();
-      const targetWidth = rect.width;
-      svg.attr('width', targetWidth);
-      svg.attr('height', Math.round(targetWidth / aspect));
-    }
-
-    return svg;
-  }
-
   private initSvg() {
     const width = 900;
     const height = 500;
@@ -145,9 +127,8 @@ export class AreaChartBrushZoomComponent implements OnInit , AfterViewInit {
     this.svg = d3.select(this.parentNativeElement)
       .select('div#topicFollowersChartArea')
       .append('svg')
-      .attr('width', this.width)
-      .attr('height', this.height + 200)
-      .call(this.responsivefy);
+      .attr('preserveAspectRatio', 'xMinYMin meet')
+      .attr('viewBox', '0 70 900 500');
 
     this.x = d3Scale.scaleTime().range([0, this.width]);
     this.x2 = d3Scale.scaleTime().range([0, this.width]);
@@ -244,9 +225,9 @@ export class AreaChartBrushZoomComponent implements OnInit , AfterViewInit {
     this.focus.append('path')
       .datum(data)
       .attr('class', 'area')
-      .attr('fill', '#fafafa')
-      .attr('stroke', '#3f51b5')
-      .attr('stroke-width', 2 + 'px')
+      .attr('fill', '#3498db')
+      .attr('stroke', '#000000')
+      .attr('stroke-width', 1 + 'px')
       .attr('d', this.area);
     this.focus.append('g')
       .attr('class', 'axis axis--x')
@@ -284,10 +265,10 @@ export class AreaChartBrushZoomComponent implements OnInit , AfterViewInit {
     this.circles = this.focus.selectAll('dot')
       .data(data)
       .enter().append('circle')
-      .attr('fill', '#fafafa')
-      .attr('stroke', '#3f51b5')
+      .attr('fill', '#3f51b5')
+      .attr('stroke', '#000000')
       .attr('stroke-width', 2 + 'px')
-      .attr('r', 3)
+      .attr('r', 2)
       .attr('cx', function(d) { return x(d.date); })
       .attr('cy', function(d) { return y(d.mentions); })
       .on('mouseover', function(d) {
