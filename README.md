@@ -13,4 +13,5 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
     *)npm install --save @types/d3-shape
     *)npm install --save @types/d3-time-format
     *)npm install --save @types/d3-zoom
+    *)npm install --save d3-cloud
 
