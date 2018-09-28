@@ -8,6 +8,7 @@ import { LineChartComponent } from './../line-chart/line-chart.component';
 import { WordCloudComponent } from './../word-cloud/word-cloud.component';
 import { PieChartComponent } from './../pie-chart/pie-chart.component';
 import { StackedChartComponent } from './../stacked-chart/stacked-chart.component';
+import { D3Service } from 'd3-ng2-service'; // <-- import statement
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { StackedChartComponent } from './../stacked-chart/stacked-chart.componen
     RouterModule.forChild(LayoutRoutingModule),
     SharedModule
   ],
-  declarations: [AreaChartBrushZoomComponent, LineChartComponent , WordCloudComponent , PieChartComponent , StackedChartComponent]
+  declarations: [AreaChartBrushZoomComponent, LineChartComponent , WordCloudComponent , PieChartComponent , StackedChartComponent],
+  providers: [D3Service]
 })
 export class LayoutModule { }
