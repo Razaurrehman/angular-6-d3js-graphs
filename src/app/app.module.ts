@@ -7,7 +7,6 @@ import { LayoutComponent } from './layout/layout.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app.routing';
-
 @NgModule({
   declarations: [
     AppComponent,
